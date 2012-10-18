@@ -96,9 +96,17 @@ img {
 }
 
 header {
-  width:270px;
+  width:330px;
   float:left;
   position:fixed;
+}
+
+header .photo {
+  float: left;
+  margin-right: 20px;
+  margin-top: -10px;
+  border: 1px solid #CCC;
+  padding: 5px;
 }
 
 header ul {
