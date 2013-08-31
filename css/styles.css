@@ -181,6 +181,12 @@ footer {
   bottom:50px;
 }
 
+footer p {
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: #999;
+}
+
 @media print, screen and (max-width: 960px) {
   
   div.wrapper {
