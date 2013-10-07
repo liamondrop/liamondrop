@@ -5,20 +5,26 @@
     function Task() {
       var self = this;
       self.taskNumber = (taskNumber += 1);
-      self.status = ko.observable('Pending');
+      self.taskStatus = ko.observable('Pending');
       self.taskClass = ko.computed(function () {
-        var status = self.status();
-        return status === 'Pending' ? 'alert alert-danger' :
-               status === 'Working' ? 'alert alert-warning' :
+        var ts = self.taskStatus();
+        return ts === 'Pending' ? 'alert alert-danger' :
+               ts === 'Working' ? 'alert alert-warning' :
                'alert alert-success';
       });
+
+      // this is the task we'll be passing to the queue
       self.onStart = function () {
         var qs = lq.size();
-        self.status('Working');
+        self.taskStatus('Working');
+
+        // delay update to task status and queue size
+        // so humans can see what's actually happening
         setTimeout(function () {
-          self.status('Complete');
+          self.taskStatus('Complete');
           root.queueSize(qs);
         }, (delay += 200));
+
         root.inFlight(lq.inFlight());
         root.isRunning(lq.isRunning());
       };

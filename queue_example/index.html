@@ -41,8 +41,8 @@
       <ul class="list-unstyled" data-bind="foreach: tasks(), visible: tasks().length">
         <li data-bind="css: taskClass" style="transition: all 150ms linear">
           Task #<span data-bind="text: taskNumber">--</span>.
-          Task status: <strong data-bind="text: status()">--</strong>.
-          <span class="close pull-right" data-bind="click: $parent.removeTask, visible: status() == 'Complete'">&times;</span>
+          Task status: <strong data-bind="text: taskStatus()">--</strong>.
+          <span class="close pull-right" data-bind="click: $parent.removeTask, visible: taskStatus() == 'Complete'">&times;</span>
         </li>
       </ul>
     </div>
