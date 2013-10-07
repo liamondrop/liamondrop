@@ -34,6 +34,7 @@
         taskNumber = 0,
         delay = 0;
 
+    // some data
     root.tasks = ko.observableArray([]);
     root.queueSize = ko.observable(lq.size());
     root.inFlight = ko.observable(lq.inFlight());
@@ -51,6 +52,7 @@
       owner: root
     });
 
+    // some methods
     root.addTask = function () {
       var task = new Task();
       lq.addTask(task.onStart);
@@ -63,6 +65,7 @@
     };
     root.runQueue = lq.start;
 
+    // when queue has emptied out
     lq.addCallback(function () {
       root.inFlight(lq.inFlight());
       root.isRunning(lq.isRunning());
