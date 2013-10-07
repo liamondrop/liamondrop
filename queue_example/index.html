@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task Queue</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css">
+  </head>
+  <body>
+    <div class="container">
+
+      <h1>
+        Async Task Queue
+        <div class="btn-group pull-right">
+          <button class="btn btn-default" data-bind="click: addTask">Add Task</button>
+          <button class="btn btn-default" data-bind="click: runQueue">Run Queue</button>
+        </div>
+      </h1>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Parallelism</th>
+            <th>Tasks Queued</th>
+            <th>Tasks Running</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="form-inline">
+            <td class="form-group" style="border: 0">
+              <input type="text" class="form-control" data-bind="value: parallelism">
+            </td>
+            <td data-bind="text: queueSize()">--</td>
+            <td data-bind="text: inFlight()">--</td>
+            <td data-bind="text: queueStatus()">--</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ul class="list-unstyled" data-bind="foreach: tasks(), visible: tasks().length">
+        <li data-bind="css: taskClass" style="transition: all 150ms linear">
+          Task #<span data-bind="text: taskNumber">--</span>.
+          Task status: <strong data-bind="text: status()">--</strong>.
+          <span class="close pull-right" data-bind="click: $parent.removeTask, visible: status() == 'Complete'">&times;</span>
+        </li>
+      </ul>
+    </div>
+    <script src="./js/knockout.min.js"></script>
+    <script src="./js/liamQueue.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
