@@ -3,6 +3,7 @@
   function TaskListViewModel() {
 
     function Task() {
+      // this is data for the individual tasks items in the UI
       var self = this;
       self.taskNumber = (taskNumber += 1);
       self.taskStatus = ko.observable('Pending');
@@ -61,7 +62,7 @@
       delay = 0;
     };
     root.removeTask = function (task) {
-      root.tasks.remove(task);
+      root.tasks.remove(task); // this is strictly to remove tasks from the UI after completion
     };
     root.runQueue = lq.start;
 
